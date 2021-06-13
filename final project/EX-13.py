@@ -35,7 +35,7 @@ def print_result(A):
     else:
         for num in B:
             if num != -1:
-                2
+                print(final_result(round(float(num), 4),datetime.now()))
 
 
 
@@ -108,13 +108,14 @@ def secant_method(my_f, start_point, end_point, epsilon):
     temp_end = start_point + x
     while temp_end <= end_point:
         result = (temp2(my_f, temp_start, temp_end, epsilon))
-        if result == 0 :
+        if result == 0:
             print("The digit 0 cannot be calculated within the ln function")
         else:
             if result != 0:
-                if result >= temp_start and result <= temp_end :
-                    A[index] = result
-                    index += 1
+                if round(f(result), 3) == 0.000:
+                    if result >= temp_start and result <= temp_end :
+                        A[index] = result
+                        index += 1
 
 
         temp_start = temp_end
@@ -143,6 +144,7 @@ def temp2 (my_f,start_point,end_point,epsilon):
         i += 1
 
     return xr
+
 
 
 # trapezoidal rule
@@ -175,7 +177,7 @@ def romberg(my_f,a,b,eps,n):
         if i > 0:
             if (abs(Q[i,j+1] - Q[i,j]) < eps):
                break
-    print("\nThe final result:",final_result(Q[i,j+1],datetime.now()))
+    print("\nThe final resulr:",Q[i,j+1])
 
 
 def simpson(my_f, a, b, n):
@@ -201,9 +203,9 @@ def main():
     x = sp.symbols('x')
 
     start_point = 0
-    end_point = 1.5
+    end_point = 3
     epsilon = 0.00001
-    my_f = (2 * x * math.e ** -x + sp.ln(2 * x ** 2)) * (2 * x ** 3 + 2 * x ** 2 - 3 * x - 5)
+    my_f = (2 * x * math.e ** -x + sp.ln(2 * x ** 2)) * (2 * x ** 2 - 3 * x - 5)
     check = input("choose option: 1 to Newton_Raphson, 2 to secant_method ")
     if check == '1':
         Newton_Raphson(my_f, start_point, end_point, epsilon)
@@ -215,5 +217,5 @@ def main():
     print("\nAccording to the Romberg method, the value of the integral is between 0.5 and 1")
     romberg(my_f, a, b, 1.0e-12, 4)
     print("\nAccording to the Simpson  method, the value of the integral is between 0.5 and 1")
-    print(final_result(simpson(my_f, a, b, 4),datetime.now()))
+    print(simpson(my_f, a, b, 4))
 main()
