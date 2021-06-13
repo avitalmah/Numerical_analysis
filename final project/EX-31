@@ -90,32 +90,10 @@ def final_result(actual_result,now):
 
 """----------------------------main----------------------------------"""
 x = float(input('choose your methode\n'
-                'Linear-1\n'
-                'Polinom-2\n'
                 'Lagrange-3\n'
                 'Neviile-4\n'))
 xp = float(input('Enter interpolation point: '))
-if x == 1:
-    table = [[0, 0], [0, 0]]
-    print('Enter first point:')
-    for i in range(2):
-        table[0][i] = float(input())
-    print('Enter second point:')
-    for i in range(2):
-        table[1][i] = float(input())
-    print('Interpolated value at %0.4f is %0.4f' % (xp, Linear(table, xp)))
-elif x == 2:
-    n = int(input('Enter num of points'))
-    table_x = [[0 for x in range(n)] for y in range(n)]
-    table_y = [0 for y in range(n)]
-    for i in range(n):
-        table_x[0][i] = 1
-    print('Enter points')
-    for i in range(n):
-        table_x[1][i] = float(input())
-        table_y[i] = float(input())
-    print('Interpolated value at %0.4f is %0.4f' % (xp, Polinom(table_x, table_y, xp)))
-elif x == 3:
+if x == 3:
     n = int(input('Enter num of points: '))
     table_x = [0 for y in range(n)]
     table_y = [0 for y in range(n)]
