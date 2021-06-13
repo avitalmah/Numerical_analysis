@@ -75,6 +75,7 @@ def Jacobi(a, b):
 
 
 """----------------main----------------------"""
+
 A = [[0.04, 0.01, -0.01], [0.2, 0.5, -0.2], [1, 2, 4]]
 B = [0.06, 0.3, 11]
 x = input("Which way would you like to use?\nGauss Seidel enter 1\nYaakobi enter 2\n")
