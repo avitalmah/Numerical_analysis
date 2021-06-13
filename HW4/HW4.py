@@ -272,7 +272,7 @@ def main():
     c = lambda x: 2 * (x ** 3)
     d = lambda x: 2 * (x ** 2)
 
-    my_f = lambda x: (a + b) * (c + d - (3 * x) - 5)
+    my_f = lambda x: (a(x) + b(x)) * (c(x) + d(x) - (3 * x) - 5)
     start_point = 0
     end_point = 1.5
     jump = 0.1

@@ -2,6 +2,7 @@ import sympy as sp
 import math
 from sympy.utilities.lambdify import lambdify
 import sympy
+from datetime import datetime
 
 def find_derivative(my_f):
 
@@ -21,13 +22,15 @@ def print_result(A):
         if check:
             B[index] = num
             index+=1
+    now = datetime.now()
+
 
     if A[0]== -1:
         print("There are no intersections in the field")
     else:
         for num in B:
             if num != -1:
-                print(round(float(num), 2))
+                print(final_result((round(float(num), 2)),now))
 
 
 
@@ -145,7 +148,9 @@ def temp2 (my_f,start_point,end_point,epsilon):
 
 
 
-
+def final_result(actual_result,now):
+    current_time = now.strftime("%d%H%M")
+    return f"{str(actual_result)}00000{current_time}"
 
 def main():
     x = sp.symbols('x')
@@ -153,7 +158,7 @@ def main():
     start_point = -1
     end_point = 1.5
     epsilon = 0.00001
-    my_f = (sympy.sin(2 * x * 3 + 5 * x * 2 - 6)) / (2 * math.e ** (-2 * x))
+    my_f = (sympy.sin(2 * x **3 + 5 * x ** 2 - 6)) / (2 * math.e ** (-2 * x))
 
     check = input("choose option: 1 to Newton_Raphson, 2 to secant_method ")
     if check == '1':

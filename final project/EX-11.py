@@ -19,6 +19,7 @@ def print_result(A):
             if  round(float(num),2) ==  round(float(x),2):
                 check = False
         if check:
+            print("index : " + index)
             B[index] = num
             index+=1
 
@@ -150,6 +151,13 @@ def temp2 (my_f,start_point,end_point,epsilon):
 def main():
     x = sp.symbols('x')
 
+    log = math.log
+    e = math.e
+    a = lambda x: 2 * x * (e ** (-x))
+    b = lambda x: log(e, 2 * (x ** 3))
+    c = lambda x: 2 * (x ** 3)
+    d = lambda x: 2 * (x ** 2)
+    my_f = lambda x: (a + b) * (c + d - (3 * x) - 5)
     start_point = -1
     end_point = 1.5
     epsilon = 0.00001
