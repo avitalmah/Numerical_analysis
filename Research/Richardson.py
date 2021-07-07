@@ -37,6 +37,7 @@ def inter(A_list,j):
     :return: Next list of the next iter derivative.
     """
     next_A=[]
+    # calc A(h) with h and h/2.
     for i in range (len(A_list)-1):
         a = A_list[i]
         b = A_list[i+1]
@@ -46,7 +47,7 @@ def inter(A_list,j):
 
 def centeral(f,x0,h):
     """
-    The central derivative function
+    The central derivative function -> A(h)
     :param f: The function whose derivative is calculated at x0.
     :param x0: The point which searches is derived.
     :param h: The step.
@@ -67,7 +68,14 @@ def main():
 
     f = (input("enter function of x: "))
     x = sp.symbols('x')
-    f = lambdify(x, f,modules=[{"sin":sin , "cos":cos , "tan":tan },math])
+    choose = float(input(" How do you want to get the result ? 1 - Radians , else - Degrees."))
+    if choose == 1 :
+        # result in degrees.
+        f = lambdify(x, f)
+    else:
+        # result in radians
+        f = lambdify(x, f, modules=[{"sin": sin, "cos": cos, "tan": tan}, math])
+
     x0 = float(input("Calc derivative at : "))
     k = float(input("Order of error magnitude : "))
     min_h = float(input("Set min step size :"))
